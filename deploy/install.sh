@@ -76,9 +76,10 @@ if [ ! -f "$BOT_DIR/.env" ]; then
     exit 1
 fi
 
-# Runs as the deploy user (not root) via a login shell so it picks up their
-# Node install (e.g. nvm) and leaves node_modules/dist owned by them.
-sudo -u "$DEPLOY_USER" -H bash -lc "cd '$BOT_DIR' && npm install && npm run build"
+# Runs as the deploy user (not root) via an interactive shell so it loads
+# ~/.bashrc, where user-scoped Node installs such as nvm commonly set PATH.
+# This also leaves node_modules/dist owned by the deploy user.
+sudo -u "$DEPLOY_USER" -H bash -ic "cd '$BOT_DIR' && npm install && npm run build"
 
 if [ ! -f "$BOT_DIR/dist/index.js" ]; then
     echo "Build finished but $BOT_DIR/dist/index.js still doesn't exist — check the build output above." >&2
