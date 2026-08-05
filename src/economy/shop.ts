@@ -29,7 +29,7 @@ export async function buyItem(guildId: string, userId: string, itemName: string)
     if (item.type === 'consumable') {
         const [entry] = await Inventory.findOrCreate({
             where: { guildId, userId, shopItemId: item.id },
-            defaults: { quantity: 0 }
+            defaults: { guildId, userId, shopItemId: item.id, quantity: 0 }
         })
         entry.quantity += 1
         await entry.save()

@@ -9,7 +9,7 @@ export function registerMessageCreateHandler(client: Client): void {
         const result = await processMessageXp(message.guild.id, message.author.id, message.author.bot)
 
         if (result.leveledUp && result.newLevel !== undefined) {
-            await message.channel.send(`🎉 <@${message.author.id}> reached level **${result.newLevel}**!`)
+            await message.reply(`🎉 <@${message.author.id}> reached level **${result.newLevel}**!`)
 
             const member = await message.guild.members.fetch(message.author.id)
             await applyRoleRewardsForLevel(
