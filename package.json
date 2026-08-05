@@ -1,0 +1,33 @@
+{
+	"name": "corvus-meridian",
+	"version": "0.1.0",
+	"description": "Corva - a Discord leveling & economy bot (Meridian Core)",
+	"type": "module",
+	"main": "dist/index.js",
+	"license": "MIT",
+	"author": "MPZ-00",
+	"engines": {
+		"node": ">=22.18.0"
+	},
+	"scripts": {
+		"dev": "tsx src/index.ts",
+		"build": "tsc",
+		"start": "node dist/index.js",
+		"register": "tsx src/scripts/register-commands.ts",
+		"test": "vitest run",
+		"test:watch": "vitest"
+	},
+	"dependencies": {
+		"discord.js": "^14.21.0",
+		"sequelize": "^6.37.7",
+		"sqlite3": "^5.1.7",
+		"dotenv": "^16.6.1"
+	},
+	"devDependencies": {
+		"typescript": "^5.6.3",
+		"tsx": "^4.19.2",
+		"vitest": "^2.1.4",
+		"@types/node": "^22.9.0",
+		"prettier": "^3.6.2"
+	}
+}
