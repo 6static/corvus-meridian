@@ -1,0 +1,13 @@
+[Unit]
+Description=Corva Discord Bot Service
+After=network.target
+
+[Service]
+WorkingDirectory={{BOT_DIR}}
+ExecStart=/bin/bash -lc 'exec node dist/index.js'
+Restart=on-failure
+User={{DEPLOY_USER}}
+Group={{DEPLOY_USER}}
+
+[Install]
+WantedBy=multi-user.target
